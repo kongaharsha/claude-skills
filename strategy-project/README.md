@@ -135,7 +135,7 @@ Links to the raw documents, data, and analysis this workstream uses.
 What happens next.
 ```
 
-See [`examples/WORKSTREAM.md`](examples/WORKSTREAM.md) for a fully worked example.
+See [`examples/workstream-md.md`](examples/workstream-md.md) for a fully worked example.
 
 ## Examples
 
@@ -143,14 +143,14 @@ The [`examples/`](examples/) folder has sanitized, fully worked templates for ev
 
 | File | What it shows |
 |---|---|
-| [`CLAUDE.md`](examples/CLAUDE.md) | How to instruct the AI for your project |
-| [`Project Context.md`](examples/Project%20Context.md) | Durable project framing — the "why" and strategic tensions |
-| [`WORKSTREAM.md`](examples/WORKSTREAM.md) | A living workstream document with findings and sources |
-| [`TODO & Ideas.md`](examples/TODO%20%26%20Ideas.md) | Live working memory — priorities, open questions, blockers |
-| [`Writing & Slide Standards.md`](examples/Writing%20%26%20Slide%20Standards.md) | Output quality rules — ledes, storylines, chart guidance |
-| [`Folder Map.md`](examples/Folder%20Map.md) | Navigation guide for the project structure |
-| [`Stakeholder Map.md`](examples/Stakeholder%20Map.md) | Who cares about what — tailoring output to audience |
-| [`Competitive Landscape.md`](examples/Competitive%20Landscape.md) | Threat model — not a fact dump |
+| [`claude-md.md`](examples/claude-md.md) | How to instruct the AI for your project |
+| [`project-context.md`](examples/project-context.md) | Durable project framing — the "why" and strategic tensions |
+| [`workstream-md.md`](examples/workstream-md.md) | A living workstream document with findings and sources |
+| [`todo-and-ideas.md`](examples/todo-and-ideas.md) | Live working memory — priorities, open questions, blockers |
+| [`writing-and-slide-standards.md`](examples/writing-and-slide-standards.md) | Output quality rules — ledes, storylines, chart guidance |
+| [`folder-map.md`](examples/folder-map.md) | Navigation guide for the project structure |
+| [`stakeholder-map.md`](examples/stakeholder-map.md) | Who cares about what — tailoring output to audience |
+| [`competitive-landscape.md`](examples/competitive-landscape.md) | Threat model — not a fact dump |
 
 These are meant as inspiration. Take what's useful, skip what isn't.
 
