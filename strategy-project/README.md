@@ -52,36 +52,46 @@ Copy the content of [`strategy-project.skill`](strategy-project.skill) into your
 
 ```
 You:    /strategy-project:new
-Claude: Do you have a scope document or proposal? Or just tell me the goal.
-You:    Here's the engagement letter [attaches doc]
-Claude: [extracts context, creates .context/ folder and CLAUDE.md]
-Claude: Core context layer is set up. Want to add workstreams now, or start working?
-You:    Let's add workstreams
-Claude: What are the major threads? e.g., market sizing, competitive analysis...
+Claude: I'll set up a new strategy project. Which folder should I create it in?
+        Tell me about the project — what's the core business question? Do you have
+        any scope docs or proposals I can read? What are the major workstreams?
+You:    We're evaluating whether Acme should enter the European market. Here's the
+        engagement letter. Main threads are market sizing, competitive positioning,
+        and partnership options.
+Claude: Here's what I'm planning to set up:
+        Project: acme-europe-entry
+        Core question: Should Acme enter European market, and what's the best path?
+        Workstreams: market-sizing, competitive-positioning, partnerships
+        Does this look right?
+You:    Yes, go ahead
+Claude: [creates everything at once — CLAUDE.md, .context/, all workstream files]
 ```
 
 **Existing project:**
 
 ```
 You:    /strategy-project:existing
-Claude: Where's the project folder?
+Claude: Point me to the project folder and I'll take a look.
 You:    /path/to/my-diligence-project
-Claude: [reads folder structure, identifies workstreams and source materials]
-Claude: I'll add a .context/ folder alongside your existing files. Nothing gets moved.
-Claude: [creates context layer based on what's already there]
+Claude: Here's what I see — 3 workstream folders, source materials in /data,
+        looks like a market entry assessment. Is my read right? A few questions...
+You:    [answers in chat]
+Claude: Here's what I'll add alongside your existing files: [summary].
+        Does this look right?
+You:    Yes
+Claude: [creates context layer — nothing existing gets touched]
 ```
 
 **Update (after working for a while):**
 
 ```
 You:    /strategy-project:update
-Claude: [scans all folders, workstream files, source materials, conversation context]
-Claude: Context layer audit:
-        - TODO & Ideas.md — 3 items done, 2 new priorities
+Claude: I've scanned the project. Here's what I found:
+        - TODO & Ideas.md — 3 items done, 2 new priorities to add
         - market-sizing/WORKSTREAM.md — new analysis not captured
-        - regulatory/ — folder exists but no WORKSTREAM.md
+        - regulatory/ — folder exists but no WORKSTREAM.md. Is this a workstream?
         Want me to update all of these?
-You:    Yes, go ahead
+You:    Yes, and yes regulatory is a new workstream
 Claude: [updates everything, shows what changed]
 ```
 

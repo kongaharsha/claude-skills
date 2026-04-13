@@ -2,33 +2,76 @@
 
 You are helping the user create a new strategy project with an AI context layer.
 
-**Guiding principle: get to creating the `.context/` folder fast.** Don't over-interview. Get the essentials, create the foundation, then let the user layer in more detail when they're ready.
+**Guiding principle: conversation first, files last.** Have a real dialogue about the project. Build understanding. Summarize what you'll create. Get a thumbs up. THEN write the files — all at once.
+
+**NEVER use AskUserQuestion.** All questions go in regular chat messages.
 
 ---
 
-## Phase 1: The Essentials (do this first)
+## Step 1: Establish the Folder
 
-Ask the user ONE of these two paths:
+Start with:
 
-**Path A — They have a document:**
-> "Do you have a scope document, proposal, engagement letter, or email that describes the project? If so, share it and I'll extract what I need."
+> "I'll set up a new strategy project for you. Which folder should I create it in? I can use the current directory, or you can point me somewhere else."
 
-If they share a document, read it and extract: project name, business question, key objectives, and any workstreams or deliverables mentioned.
-
-**Path B — No document:**
-> "What's the goal of this project? What question are you trying to answer or what decision does it support?"
-
-Get just two things:
-1. **Project name** — what should the folder be called?
-2. **The core objective** — the business question, decision, or thesis this project supports. One or two sentences is fine.
-
-That's enough to start. Move to Phase 2.
+Default to the current working directory if the user doesn't specify.
 
 ---
 
-## Phase 2: Create the Foundation (do this immediately)
+## Step 2: Understand the Project (conversational)
 
-Create the project folder with the core `.context/` layer:
+Have a natural conversation in chat. Don't ask one question at a time — group related questions and let the user respond naturally.
+
+Start with something like:
+
+> "Tell me about this project. A few things that would help:
+> - What's the core business question or decision this project supports?
+> - Do you have any documents I can read — a scope doc, proposal, engagement letter, email? If so, share them and I'll extract what I need.
+> - What are the major workstreams or threads of work? (e.g., market sizing, competitive analysis, financial model)
+>
+> Share as much or as little as you have — we can fill in gaps later."
+
+Based on what they share, follow up conversationally to fill in gaps. Things you're trying to understand:
+
+- **Project name** — what should the folder be called?
+- **Core objective** — the business question, decision, or thesis
+- **Workstreams** — the major threads of work (2-5 is typical)
+- **Key tensions** — what makes this hard or non-obvious?
+- **Stakeholders** — who is the work for? What do they care about?
+- **Output format** — deck, memo, recommendation, model?
+- **Source materials** — any existing docs, data, or prior work?
+
+Don't force every question. If the user gives you a scope doc, extract what you can and only ask about gaps. If they give a one-liner, ask a couple of follow-ups. Read the room.
+
+---
+
+## Step 3: Summarize Before Writing
+
+Before creating ANY files, share your understanding in chat:
+
+> "Here's what I'm planning to set up:
+>
+> **Project:** [name]
+> **Core question:** [the business question]
+> **Workstreams:**
+> - [workstream 1] — [one-line description]
+> - [workstream 2] — [one-line description]
+> - [workstream 3] — [one-line description]
+>
+> **Key tensions:** [if known]
+> **Output:** [deck/memo/etc. if known]
+>
+> I'll create a `.context/` folder with project context, a TODO tracker, writing standards, and a folder map. Each workstream gets a `WORKSTREAM.md` with purpose, key questions, and next steps.
+>
+> Does this look right? Anything to add or change?"
+
+Wait for confirmation before proceeding.
+
+---
+
+## Step 4: Create Everything At Once
+
+Once confirmed, create the full project structure in one go:
 
 ```text
 <project-name>/
@@ -38,84 +81,76 @@ Create the project folder with the core `.context/` layer:
     TODO & Ideas.md
     Writing & Slide Standards.md
     Folder Map.md
+    Stakeholder Map.md              # if stakeholders were discussed
+    Competitive Landscape.md        # if competition was discussed
+  workstreams/
+    <workstream-1>/
+      WORKSTREAM.md
+    <workstream-2>/
+      WORKSTREAM.md
 ```
 
 ### What to write in each file:
 
-**CLAUDE.md** — Write a brief but specific instruction file. This is critical — it tells the AI how to behave across every future session. Must include:
-
+**CLAUDE.md** — The most important file. Tells the AI how to behave in every future session:
 - One-paragraph project summary
 - The AI's role: "You are a strategic thought partner on [this project]. Think like a top-tier management consultant."
 - **Session start protocol:** read `.context/` files first, then read the `WORKSTREAM.md` for whichever workstream you're about to work on
 - **Workstream discipline:** each workstream folder has a `WORKSTREAM.md` — read it before doing work in that area, and update it as findings, status, or next steps change during the session
 - **Context maintenance:** periodically update `.context/` files — `TODO & Ideas.md` as priorities shift, `Project Context.md` when the durable project understanding evolves, `Folder Map.md` when new folders or files appear
 - Key behavioral rules: start with the business question, share analysis in chat before creating artifacts, challenge weak logic, never build slides directly (brainstorm storyline inline instead)
-- **Session-end rule:** before ending, update `TODO & Ideas.md`, the active workstream's `WORKSTREAM.md`, and any `.context/` file that changed. Run `/strategy-project:update` periodically for a deeper refresh.
+- **Session-end rule:** before ending, update `TODO & Ideas.md`, the active workstream's `WORKSTREAM.md`, and any `.context/` file that changed
+- Workstream table listing all workstreams with folder paths and focus areas
 
-**`.context/Project Context.md`** — Write what you know so far:
+**`.context/Project Context.md`** — Durable project framing:
 - Why the project exists
 - The core question or objective
-- Mark anything uncertain with "[To be refined]"
-- Leave a section header for "Key Strategic Tensions" even if you don't have them yet
+- Workstream overview (one paragraph each)
+- Key strategic tensions (mark with "[To be refined]" if uncertain)
+- Operating principles
 
-**`.context/TODO & Ideas.md`** — Initialize with:
-- Status: "Project setup complete — context layer in place"
-- Next steps: "Define workstreams" and any immediate priorities from the user's description
-- Open questions: anything unclear from the initial brief
+**`.context/TODO & Ideas.md`** — Live working memory:
+- Current status
+- Top priorities (first 2-3 things to tackle)
+- Open questions from the conversation
+- Ideas in motion if any came up
 
-**`.context/Writing & Slide Standards.md`** — Write sensible defaults:
-- Storyline-first approach for decks
+**`.context/Writing & Slide Standards.md`** — Output quality rules tailored to stated format:
+- Storyline-first approach for decks, or structure guidance for memos
 - Decision support over page production
 - Challenge weak framing
 - Recommend chart types and provide copy-paste-ready data
-- Can be refined once the user knows their output format
 
-**`.context/Folder Map.md`** — Map what exists so far (just the root structure)
+**`.context/Folder Map.md`** — Navigation guide for the project structure
 
-Tell the user: **"Core context layer is set up. You can start working now, or we can keep going to add workstreams and more detail."**
+**`.context/Stakeholder Map.md`** — If stakeholders were discussed: who they are, what they care about, what good output looks like for each
 
----
+**`.context/Competitive Landscape.md`** — If competition was discussed: threat model format, not a fact dump
 
-## Phase 3: Workstreams (optional — user can skip or come back)
-
-Ask:
-> "What are the major workstreams or threads of work? For example: market sizing, competitive analysis, financial model, operational assessment. Or skip this for now — you can add workstreams later."
-
-If the user provides workstreams:
-1. Create `workstreams/<name>/WORKSTREAM.md` for each one
-2. Each file should follow this structure (see `examples/workstream-md.md` for a full example):
-   - **Purpose** — what this workstream is about and what decision it feeds
-   - **Current Priorities** — checklist of what's in flight and what's done
-   - **Key Questions To Answer** — the 3-5 questions this workstream needs to resolve
-   - **Potential Outputs** — what deliverables this workstream will produce
-   - **Findings** — empty for now, or seeded from any shared documents
-   - **Important Source Files** — any known data sources or references
-   - **Next Steps** — first actions to take
-3. Update `.context/Folder Map.md` to include workstreams
-4. Update `CLAUDE.md` to reference the workstreams
-
-If the user skips: that's fine. The project works without workstream folders. They can add them anytime by creating the folder and WORKSTREAM.md.
+**Workstream `WORKSTREAM.md` files** — For each workstream (see `examples/workstream-md.md`):
+- Purpose — what it's about and what decision it feeds
+- Current Priorities — checklist (mostly empty at setup)
+- Key Questions To Answer — 3-5 questions this workstream needs to resolve
+- Potential Outputs — what deliverables it will produce
+- Findings — empty or seeded from shared documents
+- Important Source Files — any known references
+- Next Steps — first actions to take
 
 ---
 
-## Phase 4: Depth (optional — user can skip or come back)
+## Step 5: Wrap Up
 
-Only if the user wants to keep going, ask about:
+After creating all files, give a brief recap in chat:
 
-1. **Key tensions** — what are the hard trade-offs or strategic questions? What makes this non-obvious?
-2. **Stakeholder map** — who are the key stakeholders and what do they care about? If useful, create `.context/Stakeholder Map.md` (see `examples/stakeholder-map.md`)
-3. **Competitive landscape** — does competition matter? If yes, create `.context/Competitive Landscape.md` (see `examples/competitive-landscape.md`)
-4. **Source materials** — do they have existing docs to bring in? Suggest a `source-materials/` folder
-5. **Output format** — deck, memo, model? Refine `Writing & Slide Standards.md` accordingly
-
-Each of these is independent — the user can do any, all, or none.
+> "All set. Here's what I created: [quick list]. To start working, open this folder in Claude Code and pick a workstream to dig into. The AI will read the context files first."
 
 ---
 
 ## Important Rules
 
-- **Speed over completeness** — a thin context layer you can start working with beats a perfect one that takes 20 minutes to set up
+- **NEVER use AskUserQuestion** — all interaction happens in chat
+- **Conversation first, files last** — don't create files until you've summarized and gotten confirmation
 - **Write real content, not templates** — use the user's own words and framing
 - **"[To be refined]" is fine** — mark gaps explicitly rather than making things up
-- **Every phase after Phase 2 is optional** — always give the user an exit ramp
-- **Create the project folder in the current working directory** unless the user specifies otherwise
+- **Don't force every question** — if the user gives minimal input, create a minimal but functional context layer. They can always run `/strategy-project:update` later to flesh it out.
+- **Create the project folder in the specified location** — default to current working directory
