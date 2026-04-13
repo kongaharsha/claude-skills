@@ -32,22 +32,19 @@ The AI reads these files before each session and works from your compiled knowle
 
 **Requirements:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
 
-**Option 1: Download the skill file**
+**Option 1: Download the `.skill` file (fastest)**
 
-Download from the [latest release](../../releases/latest) and drop it into Claude Code.
+Download [`strategy-project.skill`](strategy-project.skill) → in Claude Code, go to Settings → Skills → Add Skill → drop the file. Done.
 
-**Option 2: Clone into your skills directory**
+**Option 2: Clone the full repo**
 
 ```bash
-git clone --depth 1 https://github.com/kongaharsha/strategy-project.git ~/.claude/skills/strategy-project
+git clone https://github.com/kongaharsha/claude-skills.git ~/.claude/skills/claude-skills
 ```
 
-Then add to your project's `CLAUDE.md`:
+**Option 3: Any LLM**
 
-```markdown
-## strategy-project
-Available skills: /strategy-project:new, /strategy-project:existing, /strategy-project:update
-```
+Copy the content of [`strategy-project.skill`](strategy-project.skill) into your conversation as context. The pattern is tool-agnostic — works with ChatGPT, Codex, Gemini, or anything that reads markdown.
 
 ### Use
 
