@@ -1,0 +1,562 @@
+---
+name: strategy-project
+description: >
+  Set up a consulting or strategy project for AI-assisted work with Claude Code (Cowork) or Codex.
+  Creates a lightweight markdown knowledge base that turns the AI into a strategic thought partner.
+  Use this skill when someone says "set up a new project", "new project", "create project context",
+  "strategy project", "consulting project setup", "add context to my project", "existing project",
+  "update my project context", "refresh context", "sync workstreams",
+  or wants to organize a strategy, diligence, or consulting engagement for AI collaboration.
+
+  Three modes — read the relevant section below:
+  - **strategy-project:new** → create a new project with context layer
+  - **strategy-project:existing** → add context layer to an existing project folder
+  - **strategy-project:update** → scan everything and bring the context layer up to date
+---
+
+# Strategy Project Setup
+
+This skill helps consultants and strategy professionals set up project folders that make Claude Code or Codex work like a sharp strategic thought partner — not a passive assistant.
+
+The core idea: create a small markdown knowledge base (`.context/` folder) inside your project folder. Raw source materials stay separate. The AI reads the compiled context layer first, then dives into specifics.
+
+---
+
+## Which Mode?
+
+| User says… | Mode | Jump to |
+|---|---|---|
+| "new project", "set up a project", "start fresh" | **New** | [New Project Mode](#new-project-mode) |
+| "existing project", "add context to this folder", "I already have a project" | **Existing** | [Existing Project Mode](#existing-project-mode) |
+| "update", "refresh", "sync", "clean up context" | **Update** | [Update Mode](#update-mode) |
+
+---
+
+## What Gets Created
+
+New and Existing modes produce this structure, tailored to the user's specific project:
+
+```text
+project-root/
+  CLAUDE.md                            # main AI instructions (AGENTS.md for Codex)
+  .context/
+    Project Context.md                 # why the project exists, key tensions
+    TODO & Ideas.md                    # live working memory
+    Writing & Slide Standards.md       # output quality rules
+    Folder Map.md                      # navigation guide
+    Stakeholder Map.md                 # optional — who cares about what
+    Competitive Landscape.md           # optional — when competition matters
+  workstreams/
+    <workstream-name>/
+      WORKSTREAM.md                    # living doc: purpose, findings, priorities, sources
+```
+
+### WORKSTREAM.md Structure
+
+Each workstream's `WORKSTREAM.md` should include:
+- **Purpose** — what this workstream is about and what decision it feeds
+- **Current Priorities** — checklist of what's in flight and what's done
+- **Key Questions To Answer** — the 3-5 questions this workstream needs to resolve
+- **Potential Outputs** — what deliverables this workstream will produce
+- **Findings** — what's been learned so far, with sources and caveats labeled
+- **Important Source Files** — links to raw documents, data, and analysis
+- **Next Steps** — what happens next
+
+---
+
+## CLAUDE.md — What It Must Tell the AI
+
+The generated `CLAUDE.md` is the most important file. It must instruct the AI to:
+
+1. **On session start:** read `.context/` files, then check the relevant workstream's `WORKSTREAM.md`
+2. **During work:** read and update the active workstream's `WORKSTREAM.md` as findings, status, or next steps change
+3. **Periodically:** keep `.context/` files current — update `TODO & Ideas.md` as priorities shift, update `Project Context.md` when durable understanding changes
+4. **On session end:** update `TODO & Ideas.md`, the active `WORKSTREAM.md`, and any `.context/` file that changed
+
+The AI should treat `WORKSTREAM.md` as the living document for each workstream — not just a setup artifact.
+
+---
+
+## Design Principles
+
+1. **Get to value fast** — create the core context layer quickly, refine later
+2. **Small and high-signal** — a few well-maintained files beat many stale ones
+3. **Compiled knowledge, not raw notes** — source material stays separate
+4. **The AI is a thought partner** — it challenges weak logic, not just takes notes
+5. **Decision support over documentation volume** — optimize for better decisions
+6. **Living context** — the context layer evolves with the project, not just at setup
+
+---
+
+## Codex Instructions
+
+If the user is setting up for OpenAI Codex instead of Claude Code:
+- Replace `CLAUDE.md` with `AGENTS.md` (Codex convention)
+- Everything else stays the same — `.context/` folder, workstream files, the whole pattern
+- Note this in the generated files so the user knows
+
+---
+
+# New Project Mode
+
+You are helping the user create a new strategy project with an AI context layer.
+
+**Guiding principle: get to creating the `.context/` folder fast.** Don't over-interview. Get the essentials, create the foundation, then let the user layer in more detail when they're ready.
+
+---
+
+## Phase 1: The Essentials (do this first)
+
+Ask the user ONE of these two paths:
+
+**Path A — They have a document:**
+> "Do you have a scope document, proposal, engagement letter, or email that describes the project? If so, share it and I'll extract what I need."
+
+If they share a document, read it and extract: project name, business question, key objectives, and any workstreams or deliverables mentioned.
+
+**Path B — No document:**
+> "What's the goal of this project? What question are you trying to answer or what decision does it support?"
+
+Get just two things:
+1. **Project name** — what should the folder be called?
+2. **The core objective** — the business question, decision, or thesis this project supports. One or two sentences is fine.
+
+That's enough to start. Move to Phase 2.
+
+---
+
+## Phase 2: Create the Foundation (do this immediately)
+
+Create the project folder with the core `.context/` layer:
+
+```text
+<project-name>/
+  CLAUDE.md
+  .context/
+    Project Context.md
+    TODO & Ideas.md
+    Writing & Slide Standards.md
+    Folder Map.md
+```
+
+### What to write in each file:
+
+**CLAUDE.md** — Write a brief but specific instruction file. This is critical — it tells the AI how to behave across every future session. Must include:
+
+- One-paragraph project summary
+- The AI's role: "You are a strategic thought partner on [this project]. Think like a top-tier management consultant."
+- **Session start protocol:** read `.context/` files first, then read the `WORKSTREAM.md` for whichever workstream you're about to work on
+- **Workstream discipline:** each workstream folder has a `WORKSTREAM.md` — read it before doing work in that area, and update it as findings, status, or next steps change during the session
+- **Context maintenance:** periodically update `.context/` files — `TODO & Ideas.md` as priorities shift, `Project Context.md` when the durable project understanding evolves, `Folder Map.md` when new folders or files appear
+- Key behavioral rules: start with the business question, share analysis in chat before creating artifacts, challenge weak logic, never build slides directly (brainstorm storyline inline instead)
+- **Session-end rule:** before ending, update `TODO & Ideas.md`, the active workstream's `WORKSTREAM.md`, and any `.context/` file that changed. Run `/strategy-project:update` periodically for a deeper refresh.
+
+**`.context/Project Context.md`** — Write what you know so far:
+- Why the project exists
+- The core question or objective
+- Mark anything uncertain with "[To be refined]"
+- Leave a section header for "Key Strategic Tensions" even if you don't have them yet
+
+**`.context/TODO & Ideas.md`** — Initialize with:
+- Status: "Project setup complete — context layer in place"
+- Next steps: "Define workstreams" and any immediate priorities from the user's description
+- Open questions: anything unclear from the initial brief
+
+**`.context/Writing & Slide Standards.md`** — Write sensible defaults:
+- Storyline-first approach for decks
+- Decision support over page production
+- Challenge weak framing
+- Recommend chart types and provide copy-paste-ready data
+- Can be refined once the user knows their output format
+
+**`.context/Folder Map.md`** — Map what exists so far (just the root structure)
+
+Tell the user: **"Core context layer is set up. You can start working now, or we can keep going to add workstreams and more detail."**
+
+---
+
+## Phase 3: Workstreams (optional — user can skip or come back)
+
+Ask:
+> "What are the major workstreams or threads of work? For example: market sizing, competitive analysis, financial model, operational assessment. Or skip this for now — you can add workstreams later."
+
+If the user provides workstreams:
+1. Create `workstreams/<name>/WORKSTREAM.md` for each one
+2. Each file should follow the WORKSTREAM.md structure above:
+   - **Purpose** — what this workstream is about and what decision it feeds
+   - **Current Priorities** — checklist of what's in flight and what's done
+   - **Key Questions To Answer** — the 3-5 questions this workstream needs to resolve
+   - **Potential Outputs** — what deliverables this workstream will produce
+   - **Findings** — empty for now, or seeded from any shared documents
+   - **Important Source Files** — any known data sources or references
+   - **Next Steps** — first actions to take
+3. Update `.context/Folder Map.md` to include workstreams
+4. Update `CLAUDE.md` to reference the workstreams
+
+If the user skips: that's fine. The project works without workstream folders. They can add them anytime by creating the folder and WORKSTREAM.md.
+
+---
+
+## Phase 4: Depth (optional — user can skip or come back)
+
+Only if the user wants to keep going, ask about:
+
+1. **Key tensions** — what are the hard trade-offs or strategic questions? What makes this non-obvious?
+2. **Stakeholder map** — who are the key stakeholders and what do they care about? If useful, create `.context/Stakeholder Map.md`
+3. **Competitive landscape** — does competition matter? If yes, create `.context/Competitive Landscape.md`
+4. **Source materials** — do they have existing docs to bring in? Suggest a `source-materials/` folder
+5. **Output format** — deck, memo, model? Refine `Writing & Slide Standards.md` accordingly
+
+Each of these is independent — the user can do any, all, or none.
+
+---
+
+## New Project — Important Rules
+
+- **Speed over completeness** — a thin context layer you can start working with beats a perfect one that takes 20 minutes to set up
+- **Write real content, not templates** — use the user's own words and framing
+- **"[To be refined]" is fine** — mark gaps explicitly rather than making things up
+- **Every phase after Phase 2 is optional** — always give the user an exit ramp
+- **Create the project folder in the current working directory** unless the user specifies otherwise
+
+---
+
+# Existing Project Mode
+
+You are helping the user add the AI context layer to a project folder that already has work in it.
+
+**Guiding principle: read first, ask second, never touch existing files.**
+
+---
+
+## Phase 1: Point to the Folder
+
+Ask:
+> "Where's the project folder? Give me the path and I'll take a look."
+
+Once you have the path:
+1. Read the directory structure (top-level and one level deep)
+2. Scan for any existing AI config (CLAUDE.md, AGENTS.md, .cursorrules, etc.)
+3. Look at key files: READMEs, any markdown summaries, project docs
+4. Identify what look like workstreams (folders with analytical work)
+5. Identify source material locations (data, raw docs, downloads)
+
+---
+
+## Phase 2: Quick Summary + Confirm
+
+Share what you found:
+> "Here's what I see in your project:
+> - [folder structure summary]
+> - [what looks like workstreams]
+> - [where source materials seem to live]
+>
+> I'll add a `.context/` folder and `CLAUDE.md` alongside your existing files. Nothing gets moved or deleted.
+>
+> Before I do — what's the core business question or objective for this project?"
+
+Get the one-liner on the project objective, then move to Phase 3 immediately.
+
+---
+
+## Phase 3: Create the Context Layer
+
+Add these files to the existing project root:
+
+```text
+existing-project/
+  CLAUDE.md                          # NEW
+  .context/                          # NEW folder
+    Project Context.md
+    TODO & Ideas.md
+    Writing & Slide Standards.md
+    Folder Map.md
+```
+
+### What to write:
+
+**CLAUDE.md** — Tailored to the existing project. This is the most important file — it tells the AI how to behave across every future session. Must include:
+- Reference the actual folder structure and key files
+- Note which existing files contain valuable context
+- Instruct the AI to check existing work before starting new analysis
+- **Session start protocol:** read `.context/` files first, then read the `WORKSTREAM.md` for whichever workstream you're about to work on
+- **Workstream discipline:** each workstream folder has a `WORKSTREAM.md` — read it before doing work in that area, and update it as findings, status, or next steps change during the session
+- **Context maintenance:** periodically update `.context/` files — `TODO & Ideas.md` as priorities shift, `Project Context.md` when durable understanding evolves, `Folder Map.md` when new folders or files appear
+- Standard behavioral rules: thought partner, business question first, challenge weak logic, storyline-first for decks
+- **Session-end rule:** before ending, update `TODO & Ideas.md`, the active workstream's `WORKSTREAM.md`, and any `.context/` file that changed. Run `/strategy-project:update` periodically for a deeper refresh.
+- If there's an existing CLAUDE.md or AGENTS.md, ask the user whether to merge or replace
+
+**`.context/Project Context.md`** — Synthesize from what you found:
+- Pull context from existing docs, READMEs, or summaries
+- Note what you inferred vs. what the user confirmed
+- Flag gaps with "[To be refined]"
+
+**`.context/TODO & Ideas.md`** — Reflect actual current state:
+- What's in progress based on folder contents
+- Known next steps if you can infer them
+- Open questions
+
+**`.context/Writing & Slide Standards.md`** — Sensible defaults (same as new project)
+
+**`.context/Folder Map.md`** — Map the real folder structure:
+- What each top-level folder contains
+- Where the freshest work lives
+- Where source material vs. compiled output belongs
+
+Tell the user: **"Context layer is in place. You can start working now, or we can add workstream files to specific folders."**
+
+---
+
+## Phase 4: Workstream Files (optional)
+
+Ask:
+> "Want me to add a WORKSTREAM.md to any of these folders? This gives the AI a summary of each workstream's current state. Or skip — you can add these later."
+
+If yes:
+- Create `WORKSTREAM.md` in each workstream folder following the WORKSTREAM.md structure:
+  - **Purpose** — what this workstream is about and what decision it feeds
+  - **Current Priorities** — checklist of what's in flight and what's done (seeded from existing work)
+  - **Key Questions To Answer** — inferred from existing analysis or asked
+  - **Potential Outputs** — what deliverables this workstream will produce
+  - **Findings** — summarize existing work found in the folder
+  - **Important Source Files** — reference actual files found in the folder
+  - **Next Steps** — inferred from current state
+- Summarize existing work found in that folder
+- Note what analysis exists and what gaps remain
+- Update Folder Map accordingly
+
+If they skip: that's fine.
+
+---
+
+## Phase 5: Depth (optional)
+
+Same as new project — offer to add:
+- Key tensions → update Project Context.md
+- Stakeholder map → create `.context/Stakeholder Map.md`
+- Competitive landscape → create `.context/Competitive Landscape.md`
+- Output standards → refine Writing & Slide Standards.md
+
+Each is independent and skippable.
+
+---
+
+## Existing Project — Important Rules
+
+- **NEVER modify, move, rename, or delete existing files**
+- **Only add new files** — `.context/` folder, `CLAUDE.md`, and optional `WORKSTREAM.md` files
+- **Read before writing** — base content on what actually exists in the folder
+- **Be honest about gaps** — "I didn't find details on X, you may want to add this"
+- **If there's already a CLAUDE.md** — ask before replacing. Offer to merge.
+- **Keep it proportional** — a small project gets a small context layer
+
+---
+
+# Update Mode
+
+You are helping the user bring their project's `.context/` folder and workstream files up to date by scanning everything in the project.
+
+**Guiding principle: read everything, then reconcile.** The context layer may have drifted from reality — new files added, workstreams that progressed, findings that were never captured, stale TODOs. Your job is to fix that.
+
+---
+
+## Step 1: Full Project Scan
+
+Read the project systematically:
+
+1. **CLAUDE.md** — understand the current instructions and project framing
+2. **`.context/` files** — read every file in the context folder
+3. **All workstream folders** — read every `WORKSTREAM.md`, plus scan for new files, analysis outputs, notes, or data that appeared since the last update
+4. **Source materials** — scan for new documents, attachments, PDFs, spreadsheets, or data files anywhere in the project
+5. **Conversation context** — if there's an active conversation, review what was discussed, decided, or discovered
+6. **Orphan folders** — look for folders that exist but have no `WORKSTREAM.md` (may be new workstreams)
+
+Build a mental inventory of:
+- What the context layer says vs. what actually exists
+- New work or files not reflected in the context
+- Stale information that needs updating or removing
+- Missing workstreams or workstream files
+- Open questions that have been answered
+- TODOs that are done or no longer relevant
+
+---
+
+## Step 2: Show the User What You Found
+
+Present a concise diff — what's out of date and what you'll fix:
+
+> **Context layer audit:**
+> - `.context/Project Context.md` — [up to date / needs X updated]
+> - `.context/TODO & Ideas.md` — [3 items done, 2 new priorities to add]
+> - `.context/Folder Map.md` — [2 new folders not mapped]
+> - `.context/Competitive Landscape.md` — [stale / missing / fine]
+> - `workstreams/market-sizing/WORKSTREAM.md` — [findings not captured from new analysis]
+> - `workstreams/financial-model/` — [folder exists but no WORKSTREAM.md]
+>
+> Want me to update all of these, or pick specific ones?
+
+---
+
+## Step 3: Update the Files
+
+For each file that needs updating:
+
+### `.context/TODO & Ideas.md`
+- Remove completed items
+- Add new priorities discovered from the scan
+- Update current status
+- Refresh open questions — remove answered ones, add new ones
+- Keep it short and crisp (this is the most common file to go stale)
+
+### `.context/Project Context.md`
+- Update if the project's durable understanding has changed
+- Add new workstreams that were created since last update
+- Refine strategic tensions based on new findings
+- Don't rewrite what's still accurate — surgical updates only
+
+### `.context/Folder Map.md`
+- Add new folders and files
+- Remove references to deleted folders
+- Update descriptions of where the freshest work lives
+- Note new source materials or data files
+
+### `.context/Competitive Landscape.md`
+- Update if new competitive intel appeared in any workstream
+- Create this file if competition has become relevant and it doesn't exist yet
+- Remove if no longer relevant (ask first)
+
+### `.context/Writing & Slide Standards.md`
+- Usually doesn't need updating unless the output format or audience changed
+- Check if any new conventions emerged from recent work
+
+### Workstream `WORKSTREAM.md` files
+- Update findings with new analysis or data found in the folder
+- Update status — what's done, what's in progress
+- Refresh next steps
+- Update open questions
+- If a folder looks like a workstream but has no WORKSTREAM.md, create one
+
+### CLAUDE.md
+- Update the workstream list if new workstreams were added
+- Update the project summary if the scope changed
+- Don't touch behavioral rules unless something is broken
+
+---
+
+## Step 4: Handle New Content
+
+If you find documents, attachments, or data files that aren't reflected anywhere:
+
+1. **Identify what they are** — read or scan them
+2. **Extract durable insights** — key findings, data points, decisions
+3. **Route them** — update the relevant workstream's WORKSTREAM.md or the appropriate .context/ file
+4. **Don't duplicate** — summarize into the context layer, don't copy raw content
+
+For new folders that look like workstreams:
+- Ask the user: "I see a `regulatory-analysis/` folder that doesn't have a WORKSTREAM.md. Is this a workstream? Want me to create one?"
+
+---
+
+## Step 5: Summary
+
+After updating, show:
+
+1. **What changed** — list each file updated and a one-line summary of the change
+2. **What was added** — any new files created (new WORKSTREAM.md files, etc.)
+3. **What's still open** — gaps you noticed but couldn't fill (e.g., "the financial model workstream has data files but no written findings — you may want to work on this next")
+
+---
+
+## Update Mode — Important Rules
+
+- **Read before writing** — scan everything before changing anything
+- **Surgical updates** — don't rewrite files that are mostly fine. Edit the parts that changed.
+- **Ask about ambiguity** — if you're not sure whether something is a new workstream or just scratch files, ask
+- **Don't inflate** — if the project is lean, the context layer should stay lean
+- **Preserve the user's voice** — when updating, match the tone and style of what's already there
+- **Show your work** — always present the audit before making changes so the user can steer
+
+---
+
+# Reference: Example WORKSTREAM.md
+
+```markdown
+# Workstream: Market Sizing
+*Last updated: 2026-04-10*
+
+## Purpose
+Define the addressable market for mid-market healthcare IT, identify the most attractive
+segments, and quantify the revenue opportunity under different penetration scenarios.
+This workstream feeds directly into the go/no-go investment case.
+
+## Current Priorities
+- [ ] Finalize TAM/SAM/SOM framework using bottom-up and top-down approaches
+- [ ] Complete segment attractiveness scoring
+- [ ] Build penetration scenarios (conservative, base, aggressive) with revenue projections
+- [x] Initial desk research on market size estimates from analyst reports
+
+## Key Questions To Answer
+1. What is the realistic addressable market — not the headline TAM, but what we could actually serve?
+2. Which sub-segments are most attractive given our capabilities?
+3. What penetration rate is realistic in year 1 vs. year 3?
+4. How sensitive is the opportunity to pricing assumptions?
+
+## Potential Outputs
+- Segment attractiveness matrix (2x2 or scored ranking)
+- TAM → SAM → SOM waterfall with assumptions documented
+- Revenue scenario model (3 scenarios, 3-year horizon)
+- One-page summary for the steering committee deck
+
+## Findings
+
+### Market size estimates (initial)
+- Total healthcare IT market: ~$280B globally, growing at ~12% CAGR
+- Mid-market segment (200-2,000 beds): estimated $35-45B, growing faster at ~18% CAGR
+- Source: Gartner 2025 report + internal analysis of CMS hospital data
+- **Caveat:** top-down numbers only. Bottom-up sizing not yet complete.
+
+### Segment attractiveness — early read
+- Ambulatory care IT: high growth, fragmented competition, good platform fit
+- Inpatient EHR-adjacent: large but dominated by Epic/Cerner ecosystem
+- Revenue cycle management: attractive margins but commoditizing
+
+## Important Source Files
+- `source-materials/Gartner Healthcare IT Forecast 2025.pdf`
+- `source-materials/CMS Hospital Data Extract.xlsx`
+- `analysis/segment-scoring-model.xlsx` (in progress)
+
+## Next Steps
+1. Complete bottom-up market sizing using CMS data + pricing assumptions
+2. Validate budget authority question with customer interviews
+3. Finalize segment scoring and share with project lead
+```
+
+# Reference: Example CLAUDE.md
+
+```markdown
+## Project Summary
+You are a strategic thought partner on **Project Atlas** — a cross-functional initiative
+to evaluate whether the company should enter mid-market healthcare IT.
+
+## Your Role
+Think like a top-tier management consultant. Challenge weak logic, surface trade-offs,
+and push for sharper framing.
+
+## How To Start Each Session
+1. Read `.context/Project Context.md` for durable project framing
+2. Read `.context/TODO & Ideas.md` for current priorities
+3. Read the `WORKSTREAM.md` in whichever workstream you're about to work on
+4. Then begin
+
+## During Work
+- Start with the business question, not the file
+- Share early analysis in chat before creating artifacts
+- Read and update the active workstream's `WORKSTREAM.md` as findings change
+- Distinguish facts from inference — label uncertainty explicitly
+- Never build slides directly — brainstorm storyline and page structure inline
+
+## Before Ending A Session
+- Update `TODO & Ideas.md` with current priorities, blockers, and open questions
+- Update the active workstream's `WORKSTREAM.md`
+- Update any `.context/` file that meaningfully changed
+```

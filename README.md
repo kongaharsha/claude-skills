@@ -8,9 +8,9 @@ AI skills for consultants, strategy professionals, and anyone doing project-base
 
 ## Skills
 
-| Skill | What It Does | Best For |
-|-------|-------------|----------|
-| [Strategy Project](strategy-project/SKILL.md) | Set up any project folder as an AI-native workspace with persistent context, workstream tracking, and session discipline | Consulting engagements, strategy projects, diligence, cross-functional initiatives |
+| Skill | What It Does | Best For | Install |
+|-------|-------------|----------|---------|
+| [Strategy Project](strategy-project/) | Set up any project folder as an AI-native workspace with persistent context, workstream tracking, and session discipline | Consulting engagements, strategy projects, diligence, cross-functional initiatives | [`.skill`](strategy-project/strategy-project.skill) |
 
 ---
 
@@ -22,7 +22,7 @@ AI skills for consultants, strategy professionals, and anyone doing project-base
 git clone https://github.com/kongaharsha/claude-skills.git ~/.claude/skills/claude-skills
 ```
 
-**Claude.ai:** Download the `.skill` file from the skill folder → Settings → Skills → Add Skill.
+**Claude.ai:** Download the `.skill` file from the table above → Settings → Skills → Add Skill.
 
 **Any LLM:** Copy the `SKILL.md` content into your conversation as context. The pattern is tool-agnostic.
 
