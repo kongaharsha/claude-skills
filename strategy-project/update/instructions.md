@@ -1,12 +1,24 @@
 # Update Mode — Refresh the Project Context Layer
 
-You are helping the user bring their project's `.context/` folder and workstream files up to date by scanning everything in the project.
+You are helping the user bring their project's `.context/` folder and workstream files up to date.
 
-**Guiding principle: read everything, then reconcile.** The context layer may have drifted from reality — new files added, workstreams that progressed, findings that were never captured, stale TODOs. Your job is to fix that.
+**Guiding principle: scan everything, discuss in chat, then update.** Show the user what's stale before fixing it.
+
+**NEVER use AskUserQuestion.** All questions go in regular chat messages.
 
 ---
 
-## Step 1: Full Project Scan
+## Step 1: Verify the Project Has Context
+
+First, check that the current folder (or a folder the user points to) has a `.context/` folder and `CLAUDE.md`. If not:
+
+> "This folder doesn't have a `.context/` folder yet. Want me to set one up? You can run `/strategy-project:new` for a fresh project or `/strategy-project:existing` to add context to what's already here."
+
+Only proceed if the context layer exists.
+
+---
+
+## Step 2: Full Project Scan
 
 Read the project systematically:
 
@@ -17,33 +29,34 @@ Read the project systematically:
 5. **Conversation context** — if there's an active conversation, review what was discussed, decided, or discovered
 6. **Orphan folders** — look for folders that exist but have no `WORKSTREAM.md` (may be new workstreams)
 
-Build a mental inventory of:
-- What the context layer says vs. what actually exists
-- New work or files not reflected in the context
-- Stale information that needs updating or removing
-- Missing workstreams or workstream files
-- Open questions that have been answered
-- TODOs that are done or no longer relevant
+Build a mental inventory of what's current vs. what's stale.
 
 ---
 
-## Step 2: Show the User What You Found
+## Step 3: Discuss What You Found
 
-Present a concise diff — what's out of date and what you'll fix:
+Present a concise audit in chat — what's out of date and what you'd fix:
 
-> **Context layer audit:**
-> - `.context/Project Context.md` — [up to date / needs X updated]
-> - `.context/TODO & Ideas.md` — [3 items done, 2 new priorities to add]
-> - `.context/Folder Map.md` — [2 new folders not mapped]
-> - `.context/Competitive Landscape.md` — [stale / missing / fine]
-> - `workstreams/market-sizing/WORKSTREAM.md` — [findings not captured from new analysis]
-> - `workstreams/financial-model/` — [folder exists but no WORKSTREAM.md]
-> 
-> Want me to update all of these, or pick specific ones?
+> "I've scanned the project. Here's what I found:
+>
+> **Up to date:**
+> - [files that look current]
+>
+> **Needs updating:**
+> - `.context/TODO & Ideas.md` — 3 items are done, 2 new priorities should be added
+> - `workstreams/market-sizing/WORKSTREAM.md` — new analysis in the folder isn't captured in findings
+> - `.context/Folder Map.md` — 2 new folders not mapped
+>
+> **New stuff to add:**
+> - `workstreams/regulatory/` — folder exists but has no WORKSTREAM.md. Is this a workstream?
+>
+> Want me to update all of these? Or pick specific ones?"
+
+Wait for the user to respond before making changes.
 
 ---
 
-## Step 3: Update the Files
+## Step 4: Update the Files
 
 For each file that needs updating:
 
@@ -52,35 +65,31 @@ For each file that needs updating:
 - Add new priorities discovered from the scan
 - Update current status
 - Refresh open questions — remove answered ones, add new ones
-- Keep it short and crisp (this is the most common file to go stale)
+- Keep it short and crisp
 
 ### `.context/Project Context.md`
 - Update if the project's durable understanding has changed
 - Add new workstreams that were created since last update
 - Refine strategic tensions based on new findings
-- Don't rewrite what's still accurate — surgical updates only
+- Surgical updates only — don't rewrite what's still accurate
 
 ### `.context/Folder Map.md`
 - Add new folders and files
 - Remove references to deleted folders
 - Update descriptions of where the freshest work lives
-- Note new source materials or data files
 
 ### `.context/Competitive Landscape.md`
 - Update if new competitive intel appeared in any workstream
-- Create this file if competition has become relevant and it doesn't exist yet
-- Remove if no longer relevant (ask first)
+- Create if competition has become relevant and it doesn't exist yet
 
 ### `.context/Writing & Slide Standards.md`
 - Usually doesn't need updating unless the output format or audience changed
-- Check if any new conventions emerged from recent work
 
 ### Workstream `WORKSTREAM.md` files
 - Update findings with new analysis or data found in the folder
 - Update status — what's done, what's in progress
-- Refresh next steps
-- Update open questions
-- If a folder looks like a workstream but has no WORKSTREAM.md, create one
+- Refresh next steps and open questions
+- If a folder looks like a workstream but has no WORKSTREAM.md, create one (after confirming with user)
 
 ### CLAUDE.md
 - Update the workstream list if new workstreams were added
@@ -89,35 +98,35 @@ For each file that needs updating:
 
 ---
 
-## Step 4: Handle New Content
+## Step 5: Handle New Content
 
 If you find documents, attachments, or data files that aren't reflected anywhere:
 
-1. **Identify what they are** — read or scan them
-2. **Extract durable insights** — key findings, data points, decisions
-3. **Route them** — update the relevant workstream's WORKSTREAM.md or the appropriate .context/ file
-4. **Don't duplicate** — summarize into the context layer, don't copy raw content
-
-For new folders that look like workstreams:
-- Ask the user: "I see a `regulatory-analysis/` folder that doesn't have a WORKSTREAM.md. Is this a workstream? Want me to create one?"
+1. Identify what they are — read or scan them
+2. Extract durable insights — key findings, data points, decisions
+3. Route them to the relevant workstream's WORKSTREAM.md or the appropriate .context/ file
+4. Don't duplicate — summarize into the context layer, don't copy raw content
 
 ---
 
-## Step 5: Summary
+## Step 6: Summary
 
-After updating, show:
+After updating, share in chat:
 
-1. **What changed** — list each file updated and a one-line summary of the change
-2. **What was added** — any new files created (new WORKSTREAM.md files, etc.)
-3. **What's still open** — gaps you noticed but couldn't fill (e.g., "the financial model workstream has data files but no written findings — you may want to work on this next")
+> "Here's what I updated:
+> - [file] — [one-line summary of change]
+> - [file] — [one-line summary of change]
+>
+> **Still open:** [any gaps you noticed but couldn't fill]"
 
 ---
 
 ## Important Rules
 
-- **Read before writing** — scan everything before changing anything
+- **NEVER use AskUserQuestion** — all interaction happens in chat
+- **Require existing context** — if there's no `.context/` folder, redirect to new/existing mode
+- **Scan first, discuss, then update** — always show the audit before making changes
 - **Surgical updates** — don't rewrite files that are mostly fine. Edit the parts that changed.
-- **Ask about ambiguity** — if you're not sure whether something is a new workstream or just scratch files, ask
+- **Ask about ambiguity in chat** — if unsure whether something is a new workstream, ask conversationally
 - **Don't inflate** — if the project is lean, the context layer should stay lean
-- **Preserve the user's voice** — when updating, match the tone and style of what's already there
-- **Show your work** — always present the audit before making changes so the user can steer
+- **Preserve the user's voice** — match the tone and style of what's already there
