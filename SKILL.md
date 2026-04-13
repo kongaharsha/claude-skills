@@ -46,11 +46,25 @@ project-root/
     TODO & Ideas.md                    # live working memory
     Writing & Slide Standards.md       # output quality rules
     Folder Map.md                      # navigation guide
+    Stakeholder Map.md                 # optional — who cares about what
     Competitive Landscape.md           # optional — when competition matters
   workstreams/
     <workstream-name>/
-      WORKSTREAM.md                    # current state, findings, next steps
+      WORKSTREAM.md                    # living doc: purpose, findings, priorities, sources
 ```
+
+### WORKSTREAM.md Structure
+
+Each workstream's `WORKSTREAM.md` should include:
+- **Purpose** — what this workstream is about and what decision it feeds
+- **Current Priorities** — checklist of what's in flight and what's done
+- **Key Questions To Answer** — the 3-5 questions this workstream needs to resolve
+- **Potential Outputs** — what deliverables this workstream will produce
+- **Findings** — what's been learned so far, with sources and caveats labeled
+- **Important Source Files** — links to raw documents, data, and analysis
+- **Next Steps** — what happens next
+
+See `examples/WORKSTREAM.md` for a fully worked example.
 
 Update mode refreshes all of these files based on the current state of the project.
 

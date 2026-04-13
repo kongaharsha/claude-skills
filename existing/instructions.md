@@ -90,7 +90,14 @@ Ask:
 > "Want me to add a WORKSTREAM.md to any of these folders? This gives the AI a summary of each workstream's current state. Or skip — you can add these later."
 
 If yes:
-- Create `WORKSTREAM.md` in each workstream folder
+- Create `WORKSTREAM.md` in each workstream folder following this structure (see `examples/WORKSTREAM.md`):
+  - **Purpose** — what this workstream is about and what decision it feeds
+  - **Current Priorities** — checklist of what's in flight and what's done (seeded from existing work)
+  - **Key Questions To Answer** — inferred from existing analysis or asked
+  - **Potential Outputs** — what deliverables this workstream will produce
+  - **Findings** — summarize existing work found in the folder
+  - **Important Source Files** — reference actual files found in the folder
+  - **Next Steps** — inferred from current state
 - Summarize existing work found in that folder
 - Note what analysis exists and what gaps remain
 - Update Folder Map accordingly
@@ -103,7 +110,8 @@ If they skip: that's fine.
 
 Same as new project — offer to add:
 - Key tensions → update Project Context.md
-- Competitive landscape → create `.context/Competitive Landscape.md`
+- Stakeholder map → create `.context/Stakeholder Map.md` (see `examples/Stakeholder Map.md`)
+- Competitive landscape → create `.context/Competitive Landscape.md` (see `examples/Competitive Landscape.md`)
 - Output standards → refine Writing & Slide Standards.md
 
 Each is independent and skippable.

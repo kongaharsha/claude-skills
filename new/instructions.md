@@ -83,7 +83,14 @@ Ask:
 
 If the user provides workstreams:
 1. Create `workstreams/<name>/WORKSTREAM.md` for each one
-2. Each file gets: what the workstream covers, key questions, current status, next steps
+2. Each file should follow this structure (see `examples/WORKSTREAM.md` for a full example):
+   - **Purpose** — what this workstream is about and what decision it feeds
+   - **Current Priorities** — checklist of what's in flight and what's done
+   - **Key Questions To Answer** — the 3-5 questions this workstream needs to resolve
+   - **Potential Outputs** — what deliverables this workstream will produce
+   - **Findings** — empty for now, or seeded from any shared documents
+   - **Important Source Files** — any known data sources or references
+   - **Next Steps** — first actions to take
 3. Update `.context/Folder Map.md` to include workstreams
 4. Update `CLAUDE.md` to reference the workstreams
 
@@ -96,9 +103,10 @@ If the user skips: that's fine. The project works without workstream folders. Th
 Only if the user wants to keep going, ask about:
 
 1. **Key tensions** — what are the hard trade-offs or strategic questions? What makes this non-obvious?
-2. **Competitive landscape** — does competition matter? If yes, create `.context/Competitive Landscape.md`
-3. **Source materials** — do they have existing docs to bring in? Suggest a `source-materials/` folder
-4. **Output format** — deck, memo, model? Refine `Writing & Slide Standards.md` accordingly
+2. **Stakeholder map** — who are the key stakeholders and what do they care about? If useful, create `.context/Stakeholder Map.md` (see `examples/Stakeholder Map.md`)
+3. **Competitive landscape** — does competition matter? If yes, create `.context/Competitive Landscape.md` (see `examples/Competitive Landscape.md`)
+4. **Source materials** — do they have existing docs to bring in? Suggest a `source-materials/` folder
+5. **Output format** — deck, memo, model? Refine `Writing & Slide Standards.md` accordingly
 
 Each of these is independent — the user can do any, all, or none.
 

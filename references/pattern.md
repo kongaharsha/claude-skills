@@ -17,13 +17,13 @@ project-root/
   .context/
     Project Context.md
     Competitive Landscape.md        # optional
+    Stakeholder Map.md              # optional
     TODO & Ideas.md
     Writing & Slide Standards.md
     Folder Map.md
   workstreams/
     example-workstream/
       WORKSTREAM.md
-      Findings.md
 ```
 
 ## File Specifications
@@ -103,13 +103,27 @@ Project navigation guide:
 - Where outputs and scratch work belong
 - How root context differs from local workstream context
 
+### .context/Stakeholder Map.md
+
+Optional — helps tailor output to the right audience:
+- Who the key stakeholders are
+- What each stakeholder cares about
+- What good output looks like for each
+- How to adjust tone and depth by audience
+
 ## Workstream-Level Pattern
 
-Most workstreams need:
-- One or two markdown files summarizing current state
-- Examples: WORKSTREAM.md, Summary.md, Findings.md
+Each workstream gets a `WORKSTREAM.md` that serves as its living document. Structure:
 
-These summarize: current findings, key open questions, next steps, local decisions or caveats.
+- **Purpose** — what this workstream is about and what decision it feeds
+- **Current Priorities** — checklist of what's in flight and what's done
+- **Key Questions To Answer** — the 3-5 questions this workstream needs to resolve
+- **Potential Outputs** — what deliverables this workstream will produce
+- **Findings** — what's been learned so far, with sources and caveats
+- **Important Source Files** — links to raw documents, data, and analysis
+- **Next Steps** — what happens next
+
+The AI should read WORKSTREAM.md before working in that area and update it as findings, status, or next steps change.
 
 ## Session Protocol
 
