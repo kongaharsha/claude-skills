@@ -111,7 +111,6 @@ Once confirmed, create everything in one go. Base all content on what you found 
 
 **Optional files** — create if they came up in conversation:
 - `.context/Stakeholder Map.md` (see `examples/stakeholder-map.md`)
-- `.context/Competitive Landscape.md` (see `examples/competitive-landscape.md`)
 
 ---
 

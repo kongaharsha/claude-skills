@@ -78,10 +78,6 @@ For each file that needs updating:
 - Remove references to deleted folders
 - Update descriptions of where the freshest work lives
 
-### `.context/Competitive Landscape.md`
-- Update if new competitive intel appeared in any workstream
-- Create if competition has become relevant and it doesn't exist yet
-
 ### `.context/Writing & Slide Standards.md`
 - Usually doesn't need updating unless the output format or audience changed
 

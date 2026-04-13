@@ -14,7 +14,7 @@ Should we enter mid-market healthcare IT, and if so, what is the highest-convict
 ## Major Workstreams
 
 - **Market Sizing** — define the addressable market, identify the most attractive segments, and quantify the revenue opportunity under different penetration scenarios.
-- **Competitive Landscape** — map incumbents and emerging players, understand their positioning, and identify where differentiation is realistic.
+- **Competitive Positioning** — map incumbents and emerging players, understand positioning, and identify where differentiation is realistic.
 - **Partnership Options** — evaluate build vs. buy vs. partner, identify potential partners, and assess the economics and control trade-offs.
 - **Financial Model** — build the investment case with unit economics, scenario analysis, and a clear view of what needs to be true for this to work.
 

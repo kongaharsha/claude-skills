@@ -50,7 +50,6 @@ project-root/
     Writing & Slide Standards.md       # output quality rules
     Folder Map.md                      # navigation guide
     Stakeholder Map.md                 # optional — who cares about what
-    Competitive Landscape.md           # optional — when competition matters
   workstreams/
     <workstream-name>/
       WORKSTREAM.md                    # living doc: purpose, findings, priorities, sources

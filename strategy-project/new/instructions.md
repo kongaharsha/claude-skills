@@ -82,7 +82,6 @@ Once confirmed, create the full project structure in one go:
     Writing & Slide Standards.md
     Folder Map.md
     Stakeholder Map.md              # if stakeholders were discussed
-    Competitive Landscape.md        # if competition was discussed
   workstreams/
     <workstream-1>/
       WORKSTREAM.md
@@ -124,8 +123,6 @@ Once confirmed, create the full project structure in one go:
 **`.context/Folder Map.md`** — Navigation guide for the project structure
 
 **`.context/Stakeholder Map.md`** — If stakeholders were discussed: who they are, what they care about, what good output looks like for each
-
-**`.context/Competitive Landscape.md`** — If competition was discussed: threat model format, not a fact dump
 
 **Workstream `WORKSTREAM.md` files** — For each workstream (see `examples/workstream-md.md`):
 - Purpose — what it's about and what decision it feeds
