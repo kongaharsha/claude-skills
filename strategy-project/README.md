@@ -12,7 +12,6 @@ I commented on a friend's post about this workflow and got 30+ inbound messages 
 
 This is not perfect. It's a pattern that works well for me — take it, make it yours, adapt it to your projects. If you find a better structure, open a PR.
 
-Inspired by [Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — the idea that LLMs should maintain persistent, compounding knowledge artifacts rather than re-deriving answers from raw sources every time.
 
 ## What it does
 
@@ -106,7 +105,6 @@ project-root/
     Writing & Slide Standards.md       # output quality rules
     Folder Map.md                      # navigation guide
     Stakeholder Map.md                 # who cares about what (optional)
-    Competitive Landscape.md           # threat model (optional)
   workstreams/
     market-sizing/
       WORKSTREAM.md                    # purpose, findings, priorities, sources
@@ -116,51 +114,9 @@ project-root/
 
 Every file is written specific to your project — not generic templates. Workstreams are optional and can be added later.
 
-## What a good WORKSTREAM.md looks like
-
-Each workstream gets a living document that the AI reads before working and updates as it goes:
-
-```markdown
-# Workstream: Market Sizing
-
-## Purpose
-What this workstream is about and what decision it feeds.
-
-## Current Priorities
-Checklist of what's in flight and what's done.
-
-## Key Questions To Answer
-The 3-5 questions this workstream needs to resolve.
-
-## Potential Outputs
-What deliverables this workstream will produce.
-
-## Findings
-What's been learned so far — with sources and caveats.
-
-## Important Source Files
-Links to the raw documents, data, and analysis this workstream uses.
-
-## Next Steps
-What happens next.
-```
-
-See [`examples/workstream-md.md`](examples/workstream-md.md) for a fully worked example.
-
 ## Examples
 
-The [`examples/`](examples/) folder has sanitized, fully worked templates for every file the skill creates:
-
-| File | What it shows |
-|---|---|
-| [`claude-md.md`](examples/claude-md.md) | How to instruct the AI for your project |
-| [`project-context.md`](examples/project-context.md) | Durable project framing — the "why" and strategic tensions |
-| [`workstream-md.md`](examples/workstream-md.md) | A living workstream document with findings and sources |
-| [`todo-and-ideas.md`](examples/todo-and-ideas.md) | Live working memory — priorities, open questions, blockers |
-| [`writing-and-slide-standards.md`](examples/writing-and-slide-standards.md) | Output quality rules — ledes, storylines, chart guidance |
-| [`folder-map.md`](examples/folder-map.md) | Navigation guide for the project structure |
-| [`stakeholder-map.md`](examples/stakeholder-map.md) | Who cares about what — tailoring output to audience |
-| [`competitive-landscape.md`](examples/competitive-landscape.md) | Threat model — not a fact dump |
+The [`examples/`](examples/) folder has fully worked, sanitized templates for every file the skill creates — CLAUDE.md, Project Context, WORKSTREAM.md, TODO & Ideas, Writing & Slide Standards, Folder Map, and Stakeholder Map.
 
 These are meant as inspiration. Take what's useful, skip what isn't.
 

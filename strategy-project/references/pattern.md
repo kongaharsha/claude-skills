@@ -16,7 +16,6 @@ project-root/
   CLAUDE.md                          # AGENTS.md if using Codex
   .context/
     Project Context.md
-    Competitive Landscape.md        # optional
     Stakeholder Map.md              # optional
     TODO & Ideas.md
     Writing & Slide Standards.md
@@ -57,16 +56,6 @@ Durable project-level context:
 - Core operating principles
 
 NOT for: meeting notes, detailed task tracking, temporary working notes.
-
-### .context/Competitive Landscape.md
-
-External threat or market context (only when competition matters):
-- Competitor or market themes
-- What is changing structurally
-- Why it matters and implications
-- What to monitor
-
-Should be a threat model, not a long fact dump.
 
 ### .context/TODO & Ideas.md
 
