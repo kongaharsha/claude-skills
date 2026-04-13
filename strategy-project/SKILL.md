@@ -64,7 +64,7 @@ Each workstream's `WORKSTREAM.md` should include:
 - **Important Source Files** — links to raw documents, data, and analysis
 - **Next Steps** — what happens next
 
-See `examples/WORKSTREAM.md` for a fully worked example.
+See `examples/workstream-md.md` for a fully worked example.
 
 Update mode refreshes all of these files based on the current state of the project.
 
