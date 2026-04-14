@@ -1,6 +1,6 @@
 # Claude Skills
 
-AI skills for consultants, strategy professionals, and anyone doing project-based analytical work. Built from real engagements — not theoretical prompts.
+AI skills for consultants, strategy professionals, and anyone doing project-based analytical work. Built from real engagements.
 
 **Who this is for:** Consultants, corporate strategy teams, product strategists, and operators who want their AI to work like a sharp project teammate — not a generic chatbot.
 
