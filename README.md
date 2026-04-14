@@ -32,8 +32,6 @@ git clone https://github.com/kongaharsha/claude-skills.git ~/.claude/skills/clau
 
 I've been using markdown files for the last few months to make sure my AI never loses project context between sessions. The setup evolved — from one big context note, to living documents, to a structured `.context/` folder pattern that actually works.
 
-I shared the approach and got 30+ inbound messages asking for more detail. So I'm turning these patterns into reusable skills that anyone can pick up.
-
 These are not perfect. They're patterns that work well for me — take them, make them yours.
 
 ---
