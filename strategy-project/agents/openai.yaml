@@ -1,0 +1,4 @@
+interface:
+  display_name: "Strategy Project"
+  short_description: "Set up AI-native strategy workspaces"
+  default_prompt: "Use $strategy-project to set up or refresh the context layer for this strategy project."

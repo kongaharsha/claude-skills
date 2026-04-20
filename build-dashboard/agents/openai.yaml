@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Dashboard"
+  short_description: "Create interactive HTML dashboards"
+  default_prompt: "Use $build-dashboard to turn this data into a self-contained interactive dashboard."

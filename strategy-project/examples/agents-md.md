@@ -1,4 +1,4 @@
-# Example CLAUDE.md
+# Example AGENTS.md
 
 > This is a sanitized example. Replace everything with your project's specifics.
 

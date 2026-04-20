@@ -75,7 +75,7 @@ Once confirmed, create the full project structure in one go:
 
 ```text
 <project-name>/
-  CLAUDE.md
+  AGENTS.md
   .context/
     Project Context.md
     TODO & Ideas.md
@@ -91,7 +91,7 @@ Once confirmed, create the full project structure in one go:
 
 ### What to write in each file:
 
-**CLAUDE.md** — The most important file. Tells the AI how to behave in every future session:
+**`AGENTS.md`** — The most important file. Tells the AI how to behave in every future session:
 - One-paragraph project summary
 - The AI's role: "You are a strategic thought partner on [this project]. Think like a top-tier management consultant."
 - **Session start protocol:** read `.context/` files first, then read the `WORKSTREAM.md` for whichever workstream you're about to work on
@@ -139,7 +139,7 @@ Once confirmed, create the full project structure in one go:
 
 After creating all files, give a brief recap in chat:
 
-> "All set. Here's what I created: [quick list]. To start working, open this folder in Claude Code and pick a workstream to dig into. The AI will read the context files first."
+> "All set. Here's what I created: [quick list]. To start working, open this folder in Codex and pick a workstream to dig into. The AI will read the context files first."
 
 ---
 

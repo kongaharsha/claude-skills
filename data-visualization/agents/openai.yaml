@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Visualization"
+  short_description: "Chart selection and design guidance"
+  default_prompt: "Use $data-visualization to choose and implement an effective visualization for this dataset."

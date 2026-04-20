@@ -1,6 +1,6 @@
 # strategy-project
 
-> Turn any consulting or strategy project into an AI-native workspace. Works with Claude Code and Codex.
+> Turn any consulting or strategy project into an AI-native workspace. Works natively with Codex.
 
 ## Why this exists
 
@@ -15,7 +15,7 @@ This is not perfect. It's a pattern that works well for me — take it, make it 
 
 ## What it does
 
-The skill creates a `.context/` folder and a `CLAUDE.md` file that give the AI:
+The skill creates a `.context/` folder and an `AGENTS.md` file that give the AI:
 
 - **Project context** — why the project exists, the core business question, key tensions
 - **Workstream awareness** — each workstream gets a living `WORKSTREAM.md` with purpose, findings, priorities, and source files
@@ -29,21 +29,18 @@ The AI reads these files before each session and works from your compiled knowle
 
 ### Install
 
-**Requirements:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-
-**Option 1: Download the `.skill` file (fastest)**
-
-Download [`strategy-project.skill`](strategy-project.skill) → in Claude Code, go to Settings → Skills → Add Skill → drop the file. Done.
-
-**Option 2: Clone the full repo**
+**Option 1: Copy the skill into Codex**
 
 ```bash
-git clone https://github.com/kongaharsha/claude-skills.git ~/.claude/skills/claude-skills
+git clone https://github.com/kongaharsha/claude-skills.git
+cp -r claude-skills/strategy-project ~/.codex/skills/strategy-project
 ```
 
-**Option 3: Any LLM**
+**Option 2: Any LLM**
 
-Copy the content of [`strategy-project.skill`](strategy-project.skill) into your conversation as context. The pattern is tool-agnostic — works with ChatGPT, Codex, Gemini, or anything that reads markdown.
+Use the whole [`strategy-project/`](.) folder as the transferable skill package, not just [`SKILL.md`](SKILL.md). This skill depends on sibling files like `new/instructions.md`, `existing/instructions.md`, `update/instructions.md`, and `references/pattern.md`.
+
+If your tool only accepts pasted markdown, start with [`SKILL.md`](SKILL.md) and also include the referenced instruction files for the mode you want to run.
 
 ### Use
 
@@ -63,7 +60,7 @@ Claude: Here's what I'm planning to set up:
         Workstreams: market-sizing, competitive-positioning, partnerships
         Does this look right?
 You:    Yes, go ahead
-Claude: [creates everything at once — CLAUDE.md, .context/, all workstream files]
+Claude: [creates everything at once — AGENTS.md, .context/, all workstream files]
 ```
 
 **Existing project:**
@@ -98,7 +95,7 @@ Claude: [updates everything, shows what changed]
 
 ```text
 project-root/
-  CLAUDE.md                            # AI instructions for this project
+  AGENTS.md                            # AI instructions for this project
   .context/
     Project Context.md                 # why the project exists, key tensions
     TODO & Ideas.md                    # live working memory
@@ -116,14 +113,14 @@ Every file is written specific to your project — not generic templates. Workst
 
 ## Examples
 
-The [`examples/`](examples/) folder has fully worked, sanitized templates for every file the skill creates — CLAUDE.md, Project Context, WORKSTREAM.md, TODO & Ideas, Writing & Slide Standards, Folder Map, and Stakeholder Map.
+The [`examples/`](examples/) folder has fully worked, sanitized templates for every file the skill creates — AGENTS.md, Project Context, WORKSTREAM.md, TODO & Ideas, Writing & Slide Standards, Folder Map, and Stakeholder Map.
 
 These are meant as inspiration. Take what's useful, skip what isn't.
 
 ## How it works in practice
 
 **Start of a session:**
-The AI reads `CLAUDE.md` and `.context/` files first, then reads the `WORKSTREAM.md` for whichever workstream you're working on. It starts with your business question, not a blank slate.
+The AI reads `AGENTS.md` and `.context/` files first, then reads the `WORKSTREAM.md` for whichever workstream you're working on. It starts with your business question, not a blank slate.
 
 **During work:**
 The AI updates the active workstream's `WORKSTREAM.md` as findings and status change. It shares early insights in chat, distinguishes facts from hypotheses, recommends analytical cuts, and provides copy-paste-ready data when useful.
@@ -146,11 +143,11 @@ Run `/strategy-project:update` to do a full scan — it reads every folder, ever
 
 ## Using with Codex
 
-If you use OpenAI Codex:
+If you use Claude instead of Codex:
 
-1. The skill generates `CLAUDE.md` — rename it to `AGENTS.md` (Codex convention)
+1. The skill generates `AGENTS.md` by default — rename it to `CLAUDE.md`
 2. Everything else stays the same — `.context/` folder, workstream files, the whole pattern
-3. Point your Codex system prompt to read the `.context/` files on startup
+3. Point your Claude setup to read the `.context/` files on startup
 
 The pattern is tool-agnostic. Only the instruction file name changes.
 

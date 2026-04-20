@@ -1,0 +1,4 @@
+interface:
+  display_name: "Statistical Analysis"
+  short_description: "Apply practical statistical methods"
+  default_prompt: "Use $statistical-analysis to analyze this data with the right statistical method and cautions."

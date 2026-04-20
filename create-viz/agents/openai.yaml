@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Viz"
+  short_description: "Create publication-quality charts"
+  default_prompt: "Use $create-viz to create the best chart for this data and save the output."

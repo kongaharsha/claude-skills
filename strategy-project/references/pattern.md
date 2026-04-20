@@ -13,7 +13,7 @@ This is the full pattern specification. Skills reference this when generating pr
 
 ```text
 project-root/
-  CLAUDE.md                          # AGENTS.md if using Codex
+  AGENTS.md                          # CLAUDE.md if using Claude
   .context/
     Project Context.md
     Stakeholder Map.md              # optional
@@ -27,7 +27,7 @@ project-root/
 
 ## File Specifications
 
-### CLAUDE.md (root) — or AGENTS.md for Codex
+### AGENTS.md (root) — or CLAUDE.md for Claude
 
 The main instruction file for the AI assistant. Must define:
 
@@ -117,7 +117,7 @@ The AI should read WORKSTREAM.md before working in that area and update it as fi
 ## Session Protocol
 
 ### Start of session
-1. Read root CLAUDE.md (or AGENTS.md)
+1. Read root AGENTS.md (or CLAUDE.md)
 2. Read .context/ files
 3. Identify relevant workstream
 4. Check workstream for local markdown summaries

@@ -1,41 +1,72 @@
-# Claude Skills
+# Codex Skills
 
-AI skills for consultants, strategy professionals, and anyone doing project-based analytical work. Built from real engagements.
+Reusable Codex skills for strategy, analytics, and project-based work.
 
-**Who this is for:** Consultants, corporate strategy teams, product strategists, and operators who want their AI to work like a sharp project teammate — not a generic chatbot.
+These skills are packaged as folder-based Codex skills so teammates can clone this repo and copy the folders they want into their local Codex skills directory.
 
----
+## Included Skills
 
-## Skills
+| Skill | Slug | Folder |
+|-------|------|--------|
+| Strategy Project | `strategy-project` | [`strategy-project/`](strategy-project/) |
+| Spreadsheet | `spreadsheet` | [`spreadsheet/`](spreadsheet/) |
+| Analyze | `analyze` | [`analyze/`](analyze/) |
+| Build Dashboard | `build-dashboard` | [`build-dashboard/`](build-dashboard/) |
+| Create Viz | `create-viz` | [`create-viz/`](create-viz/) |
+| Data Visualization | `data-visualization` | [`data-visualization/`](data-visualization/) |
+| Data Context Extractor | `data-context-extractor` | [`data-context-extractor/`](data-context-extractor/) |
+| Explore Data | `explore-data` | [`explore-data/`](explore-data/) |
+| Statistical Analysis | `statistical-analysis` | [`statistical-analysis/`](statistical-analysis/) |
+| Validate Data | `validate-data` | [`validate-data/`](validate-data/) |
 
-| Skill | What It Does | Best For | Install |
-|-------|-------------|----------|---------|
-| [Strategy Project](strategy-project/) | Set up any project folder as an AI-native workspace with persistent context, workstream tracking, and session discipline | Consulting engagements, strategy projects, diligence, cross-functional initiatives | [`.skill`](strategy-project/strategy-project.skill) |
+## Install In Codex Desktop
 
----
+1. Clone or download this repo.
+2. Copy the skill folders you want into your Codex skills directory.
+3. Restart Codex Desktop.
 
-## Quick Start
+On Windows, the target directory is usually:
 
-**Claude Code:** Clone this repo, skills auto-load when you work in the directory.
-
-```bash
-git clone https://github.com/kongaharsha/claude-skills.git ~/.claude/skills/claude-skills
+```text
+C:\Users\<your-user>\.codex\skills
 ```
 
-**Claude.ai:** Download the `.skill` file from the table above → Settings → Skills → Add Skill.
+If `CODEX_HOME` is set, use:
 
-**Any LLM:** Copy the `SKILL.md` content into your conversation as context. The pattern is tool-agnostic.
+```text
+%CODEX_HOME%\skills
+```
 
----
+Example PowerShell install:
 
-## Background
+```powershell
+git clone https://github.com/kongaharsha/claude-skills.git
+Copy-Item .\claude-skills\strategy-project "$HOME\.codex\skills\" -Recurse
+Copy-Item .\claude-skills\spreadsheet "$HOME\.codex\skills\" -Recurse
+```
 
-I've been using markdown files for the last few months to make sure my AI never loses project context between sessions. The setup evolved — from one big context note, to living documents, to a structured `.context/` folder pattern that actually works.
+To install everything in this repo:
 
-These are not perfect. They're patterns that work well for me — take them, make them yours.
+```powershell
+git clone https://github.com/kongaharsha/claude-skills.git
+@(
+  'strategy-project',
+  'spreadsheet',
+  'analyze',
+  'build-dashboard',
+  'create-viz',
+  'data-visualization',
+  'data-context-extractor',
+  'explore-data',
+  'statistical-analysis',
+  'validate-data'
+) | ForEach-Object {
+  Copy-Item ".\claude-skills\$_" "$HOME\.codex\skills\" -Recurse
+}
+```
 
----
+## Notes
 
-MIT License — use freely, modify, share.
-
-[LinkedIn](https://www.linkedin.com/in/kongaharsha/) | Built with Claude
+- Each skill should end up as `...\skills\<slug>\SKILL.md`.
+- If a folder already exists locally, copying may overwrite that skill.
+- A full Codex Desktop restart is usually required before new skills appear.

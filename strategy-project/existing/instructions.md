@@ -22,7 +22,7 @@ If the user is already in the project directory, offer to use the current direct
 
 Once you have the path, read it systematically:
 1. Directory structure (top-level and one level deep)
-2. Any existing AI config (CLAUDE.md, AGENTS.md, .cursorrules, etc.)
+2. Any existing AI config (`AGENTS.md`, `CLAUDE.md`, `.cursorrules`, etc.)
 3. Key files: READMEs, markdown summaries, project docs, proposals
 4. What looks like workstreams (folders with analytical work)
 5. Source material locations (data, raw docs, downloads)
@@ -58,7 +58,7 @@ Before creating ANY files, share your plan in chat:
 > "Here's what I'll add to your project (nothing existing gets touched):
 >
 > **New files:**
-> - `CLAUDE.md` — AI instructions tailored to this project
+> - `AGENTS.md` — AI instructions tailored to this project
 > - `.context/Project Context.md` — [one-line summary of what it'll say]
 > - `.context/TODO & Ideas.md` — [current status you inferred]
 > - `.context/Writing & Slide Standards.md` — output quality rules
@@ -75,7 +75,7 @@ Wait for confirmation before proceeding.
 
 Once confirmed, create everything in one go. Base all content on what you found in the folder AND what the user told you in chat.
 
-**CLAUDE.md** — Tailored to this specific project:
+**`AGENTS.md`** — Tailored to this specific project:
 - Reference the actual folder structure and key files
 - Note which existing files contain valuable context
 - Instruct the AI to check existing work before starting new analysis
@@ -84,7 +84,7 @@ Once confirmed, create everything in one go. Base all content on what you found 
 - **Context maintenance:** periodically update `.context/` files — `TODO & Ideas.md` as priorities shift, `Project Context.md` when durable understanding evolves, `Folder Map.md` when new folders or files appear
 - Standard behavioral rules: thought partner, business question first, challenge weak logic, storyline-first for decks
 - **Session-end rule:** before ending, update `TODO & Ideas.md`, the active workstream's `WORKSTREAM.md`, and any `.context/` file that changed
-- If there's an existing CLAUDE.md or AGENTS.md, ask the user whether to merge or replace
+- If there's an existing `AGENTS.md` or `CLAUDE.md`, ask the user whether to merge or replace
 
 **`.context/Project Context.md`** — Synthesize from what you found + what the user said:
 - Pull context from existing docs, READMEs, or summaries
@@ -129,5 +129,5 @@ After creating all files, give a brief recap in chat:
 - **Scan first, discuss, then write** — no files until you've talked it through
 - **Base content on what actually exists** — read the folder before writing about it
 - **Be honest about gaps** — "I didn't find details on X, you may want to add this"
-- **If there's already a CLAUDE.md** — ask in chat before replacing. Offer to merge.
+- **If there's already an `AGENTS.md` or `CLAUDE.md`** — ask in chat before replacing. Offer to merge.
 - **Keep it proportional** — a small project gets a small context layer

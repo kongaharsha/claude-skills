@@ -1,0 +1,4 @@
+interface:
+  display_name: "Validate Data"
+  short_description: "QA analysis before sharing"
+  default_prompt: "Use $validate-data to review this analysis for logic, accuracy, and stakeholder-ready caveats."

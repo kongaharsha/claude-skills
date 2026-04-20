@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explore Data"
+  short_description: "Profile a dataset or table"
+  default_prompt: "Use $explore-data to profile this dataset and surface quality issues and analysis ideas."

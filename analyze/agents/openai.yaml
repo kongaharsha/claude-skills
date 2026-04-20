@@ -1,0 +1,4 @@
+interface:
+  display_name: "Analyze"
+  short_description: "Answer end-to-end data questions"
+  default_prompt: "Use $analyze to answer this data question from quick lookup through full analysis."

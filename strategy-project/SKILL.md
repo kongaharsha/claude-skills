@@ -1,15 +1,18 @@
 ---
 name: strategy-project
 description: >
-  Set up a consulting or strategy project for AI-assisted work.
-  Run /strategy-project:new to create a new project — point to a folder and have a conversation about your project before any files are created.
-  Run /strategy-project:existing to add AI context to an existing project folder — scans your folder and discusses what it finds before writing anything.
-  Run /strategy-project:update to refresh an existing project's context layer — scans everything, shows what's stale, and fixes it.
+  Set up a consulting or strategy project for AI-assisted work in Codex or
+  ChatGPT-style agent workflows. Use when you want a project folder to keep
+  durable context, workstream tracking, and session discipline across
+  conversations. Run /strategy-project:new to create a new project,
+  /strategy-project:existing to add context to an existing folder, or
+  /strategy-project:update to refresh an existing project's context layer after
+  scanning what changed.
 ---
 
 # Strategy Project Setup
 
-This skill helps consultants and strategy professionals set up project folders that make Claude Code or Codex work like a sharp strategic thought partner — not a passive assistant.
+This skill helps consultants and strategy professionals set up project folders that make Codex work like a sharp strategic thought partner — not a passive assistant.
 
 The core idea: create a small markdown knowledge base (`.context/` folder) inside your project folder. Raw source materials stay separate. The AI reads the compiled context layer first, then dives into specifics.
 
@@ -17,9 +20,9 @@ The core idea: create a small markdown knowledge base (`.context/` folder) insid
 
 ## Critical Behavioral Rules
 
-**These apply to ALL modes:**
+These apply to all modes:
 
-1. **NEVER use AskUserQuestion or any tool-based prompts.** All questions must be asked conversationally as regular chat messages. The user should never have to type in a separate input box.
+1. **Never use structured prompt/input tools for routine discovery.** Ask questions conversationally in normal chat messages.
 2. **Conversation first, files last.** Build understanding through chat. Summarize what you plan to create. Get confirmation. THEN write files.
 3. **Folder first.** Every mode starts by establishing which folder to work in.
 
@@ -43,7 +46,7 @@ New and Existing modes produce this structure, tailored to the user's specific p
 
 ```text
 project-root/
-  CLAUDE.md                            # main AI instructions
+  AGENTS.md                            # main AI instructions
   .context/
     Project Context.md                 # why the project exists, key tensions
     TODO & Ideas.md                    # live working memory
@@ -70,9 +73,9 @@ See `examples/workstream-md.md` for a fully worked example.
 
 ---
 
-## CLAUDE.md — What It Must Tell the AI
+## AGENTS.md — What It Must Tell the AI
 
-The generated `CLAUDE.md` is the most important file. It must instruct the AI to:
+The generated `AGENTS.md` is the most important file. It must instruct the AI to:
 
 1. **On session start:** read `.context/` files, then check the relevant workstream's `WORKSTREAM.md`
 2. **During work:** read and update the active workstream's `WORKSTREAM.md` as findings, status, or next steps change
@@ -94,12 +97,12 @@ The AI should treat `WORKSTREAM.md` as the living document for each workstream �
 
 ---
 
-## Codex Instructions
+## Compatibility Note
 
-If the user is setting up for OpenAI Codex instead of Claude Code:
-- Replace `CLAUDE.md` with `AGENTS.md` (Codex convention)
+If the user wants a Claude-oriented version instead of the default Codex setup:
+- Replace `AGENTS.md` with `CLAUDE.md`
 - Everything else stays the same — `.context/` folder, workstream files, the whole pattern
-- Note this in the generated files so the user knows
+- Note the filename choice in the generated files so the user knows
 
 ---
 

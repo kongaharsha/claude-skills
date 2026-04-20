@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Context Extractor"
+  short_description: "Build company-specific data skills"
+  default_prompt: "Use $data-context-extractor to create or improve a company-specific data analysis skill."

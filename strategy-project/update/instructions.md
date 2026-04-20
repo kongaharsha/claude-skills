@@ -10,7 +10,7 @@ You are helping the user bring their project's `.context/` folder and workstream
 
 ## Step 1: Verify the Project Has Context
 
-First, check that the current folder (or a folder the user points to) has a `.context/` folder and `CLAUDE.md`. If not:
+First, check that the current folder (or a folder the user points to) has a `.context/` folder and `AGENTS.md` or `CLAUDE.md`. If not:
 
 > "This folder doesn't have a `.context/` folder yet. Want me to set one up? You can run `/strategy-project:new` for a fresh project or `/strategy-project:existing` to add context to what's already here."
 
@@ -22,7 +22,7 @@ Only proceed if the context layer exists.
 
 Read the project systematically:
 
-1. **CLAUDE.md** — understand the current instructions and project framing
+1. **`AGENTS.md` or `CLAUDE.md`** — understand the current instructions and project framing
 2. **`.context/` files** — read every file in the context folder
 3. **All workstream folders** — read every `WORKSTREAM.md`, plus scan for new files, analysis outputs, notes, or data that appeared since the last update
 4. **Source materials** — scan for new documents, attachments, PDFs, spreadsheets, or data files anywhere in the project
@@ -87,7 +87,7 @@ For each file that needs updating:
 - Refresh next steps and open questions
 - If a folder looks like a workstream but has no WORKSTREAM.md, create one (after confirming with user)
 
-### CLAUDE.md
+### AGENTS.md
 - Update the workstream list if new workstreams were added
 - Update the project summary if the scope changed
 - Don't touch behavioral rules unless something is broken
