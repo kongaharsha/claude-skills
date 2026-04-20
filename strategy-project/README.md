@@ -1,6 +1,6 @@
 # strategy-project
 
-> Turn any consulting or strategy project into an AI-native workspace. Works natively with Codex.
+> Turn any consulting or strategy project into an AI-native workspace. Codex-first, with a documented Claude-compatible pattern.
 
 ## Why this exists
 
@@ -113,7 +113,7 @@ Every file is written specific to your project — not generic templates. Workst
 
 ## Examples
 
-The [`examples/`](examples/) folder has fully worked, sanitized templates for every file the skill creates — AGENTS.md, Project Context, WORKSTREAM.md, TODO & Ideas, Writing & Slide Standards, Folder Map, and Stakeholder Map.
+The [`examples/`](examples/) folder has fully worked, sanitized templates for every file the skill creates — including both an `AGENTS.md` example for Codex and a `CLAUDE.md` example for Claude, plus Project Context, WORKSTREAM.md, TODO & Ideas, Writing & Slide Standards, Folder Map, and Stakeholder Map.
 
 These are meant as inspiration. Take what's useful, skip what isn't.
 
@@ -141,15 +141,13 @@ Run `/strategy-project:update` to do a full scan — it reads every folder, ever
 - **Product strategists** — competitive analysis, market entry, product roadmaps
 - **Anyone doing project-based analytical work** where context accumulates across sessions
 
-## Using with Codex
-
-If you use Claude instead of Codex:
+## Using with Claude
 
 1. The skill generates `AGENTS.md` by default — rename it to `CLAUDE.md`
 2. Everything else stays the same — `.context/` folder, workstream files, the whole pattern
 3. Point your Claude setup to read the `.context/` files on startup
 
-The pattern is tool-agnostic. Only the instruction file name changes.
+The pattern is intentionally tool-agnostic. The main host-specific difference is the instruction filename convention.
 
 ## Design principles
 
