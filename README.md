@@ -25,6 +25,10 @@ That is what this repo is for.
 | Skill | Slug | What it does |
 |-------|------|--------------|
 | Strategy Project | `strategy-project` | Sets up an AI-native project workspace with context files, workstreams, and session discipline |
+| McKinsey Consultant | `mckinsey-consultant` | Frames strategy problems, builds issue trees, sizes markets, develops options, and synthesizes recommendations |
+| Market / Competitive Intelligence | `market-competitive-intelligence` | Creates competitor recaps, market scans, profiles, market maps, and strategic signal monitors |
+| Pricing Strategy | `pricing-strategy` | Supports pricing scans, packaging comparisons, pricing memos, project recaps, and value stories |
+| M&A / DD Support | `ma-dd-support` | Supports opportunity triage, CIM review, diligence synthesis, investment memos, and deal risk tracking |
 | Spreadsheet | `spreadsheet` | Creates, edits, and analyzes spreadsheets |
 | Analyze | `analyze` | Answers end-to-end data questions |
 | Build Dashboard | `build-dashboard` | Creates interactive HTML dashboards |
@@ -71,6 +75,10 @@ To install the full recommended pack:
 git clone https://github.com/kongaharsha/claude-skills.git
 @(
   'strategy-project',
+  'mckinsey-consultant',
+  'market-competitive-intelligence',
+  'pricing-strategy',
+  'ma-dd-support',
   'spreadsheet',
   'analyze',
   'build-dashboard',
