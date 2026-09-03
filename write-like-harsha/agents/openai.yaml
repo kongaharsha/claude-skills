@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Like Harsha"
+  short_description: "Draft emails in Harsha Konga voice"
+  default_prompt: "Use $write-like-harsha to rewrite this email in Harsha Konga's voice."

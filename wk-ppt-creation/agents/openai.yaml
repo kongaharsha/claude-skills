@@ -1,0 +1,4 @@
+interface:
+  display_name: "WK PPT Creation"
+  short_description: "Wolters Kluwer strategy deck patterns"
+  default_prompt: "Use $wk-ppt-creation to create or revise a Wolters Kluwer strategy PowerPoint in the established executive-update style."

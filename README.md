@@ -29,6 +29,10 @@ That is what this repo is for.
 | Market / Competitive Intelligence | `market-competitive-intelligence` | Creates competitor recaps, market scans, profiles, market maps, and strategic signal monitors |
 | Pricing Strategy | `pricing-strategy` | Supports pricing scans, packaging comparisons, pricing memos, project recaps, and value stories |
 | M&A / DD Support | `ma-dd-support` | Supports opportunity triage, CIM review, diligence synthesis, investment memos, and deal risk tracking |
+| Write Like Harsha | `write-like-harsha` | Drafts and rewrites professional messages, updates, and executive communications in Harsha's working voice |
+| Make Executive Memo | `make-executive-memo` | Turns notes and source material into concise WK-style executive memos |
+| WK Presentation Storyline | `wk-presentation-storyline` | Creates a decision-ready slide-by-slide storyline before PowerPoint production |
+| WK PPT Creation | `wk-ppt-creation` | Creates, edits, or reviews WK Corporate Strategy PowerPoint decks with observed typography, layout, and QA standards |
 | Spreadsheet | `spreadsheet` | Creates, edits, and analyzes spreadsheets |
 | Analyze | `analyze` | Answers end-to-end data questions |
 | Build Dashboard | `build-dashboard` | Creates interactive HTML dashboards |
@@ -69,6 +73,20 @@ Copy-Item .\claude-skills\strategy-project "$HOME\.codex\skills\" -Recurse
 Copy-Item .\claude-skills\spreadsheet "$HOME\.codex\skills\" -Recurse
 ```
 
+To install the WK strategy communications pack:
+
+```powershell
+git clone https://github.com/kongaharsha/claude-skills.git
+@(
+  'write-like-harsha',
+  'make-executive-memo',
+  'wk-presentation-storyline',
+  'wk-ppt-creation'
+) | ForEach-Object {
+  Copy-Item ".\claude-skills\$_" "$HOME\.codex\skills\" -Recurse
+}
+```
+
 To install the full recommended pack:
 
 ```powershell
@@ -79,6 +97,10 @@ git clone https://github.com/kongaharsha/claude-skills.git
   'market-competitive-intelligence',
   'pricing-strategy',
   'ma-dd-support',
+  'write-like-harsha',
+  'make-executive-memo',
+  'wk-presentation-storyline',
+  'wk-ppt-creation',
   'spreadsheet',
   'analyze',
   'build-dashboard',
@@ -115,6 +137,17 @@ Example install:
 git clone https://github.com/kongaharsha/claude-skills.git
 cp -r claude-skills/strategy-project ~/.claude/skills/strategy-project
 cp -r claude-skills/spreadsheet ~/.claude/skills/spreadsheet
+```
+
+To install the WK strategy communications pack in Claude:
+
+```bash
+git clone https://github.com/kongaharsha/claude-skills.git
+mkdir -p ~/.claude/skills
+cp -r claude-skills/write-like-harsha ~/.claude/skills/write-like-harsha
+cp -r claude-skills/make-executive-memo ~/.claude/skills/make-executive-memo
+cp -r claude-skills/wk-presentation-storyline ~/.claude/skills/wk-presentation-storyline
+cp -r claude-skills/wk-ppt-creation ~/.claude/skills/wk-ppt-creation
 ```
 
 If you are adopting these in Claude for a team, validate the specific skills you care about first instead of assuming the whole pack is production-ready for Claude just because it is installable as folders.

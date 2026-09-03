@@ -1,0 +1,4 @@
+interface:
+  display_name: "WK Presentation Storyline"
+  short_description: "Build decision-ready deck storylines"
+  default_prompt: "Create a slide-by-slide Word briefing for a WK executive presentation."

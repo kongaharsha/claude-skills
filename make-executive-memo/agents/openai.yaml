@@ -1,0 +1,4 @@
+interface:
+  display_name: "Make Executive Memo"
+  short_description: "Draft WK-style executive and ELT memos."
+  default_prompt: "Draft an executive memo from my notes in the WK style."
